@@ -11,6 +11,7 @@ module SmartAuthentication
         copy_file "app/helpers/sessions_helper.rb", "app/helpers/sessions_helper.rb"
         migration_template "db/migrate/create_users.rb", "db/migrate/create_users.rb"
         insert_into_file "config/routes.rb", "\tget 'signup' => 'users#new'\n\tget 'login' => 'sessions#new'\n\tpost 'login' => 'sessions#create'\n\tdelete 'logout' => 'sessions#destroy'\n", after: "Rails.application.routes.draw do\n"
+        insert_into_file "Gemfile", "gem 'bcrypt'\n", after: "source 'https://rubygems.org'\n"
       end
 
       def self.next_migration_number(path)
